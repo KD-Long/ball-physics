@@ -90,6 +90,7 @@ const environmentMapTexture = cubeTextureLoader.load([
     '/textures/environmentMaps/0/nz.png'
 ])
 
+
 /**
  *  Physics
  */
@@ -170,7 +171,7 @@ world.addBody(floorBody)
  * Floor
  */
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(10, 10),
+    new THREE.PlaneGeometry(30, 30),
     new THREE.MeshStandardMaterial({
         color: '#777777',
         metalness: 0,
@@ -190,14 +191,16 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
 scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2)
+const dhelp = new THREE.DirectionalLightHelper(directionalLight)
+scene.add(dhelp)
 directionalLight.castShadow = true
 directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.camera.far = 15
-directionalLight.shadow.camera.left = - 7
-directionalLight.shadow.camera.top = 7
-directionalLight.shadow.camera.right = 7
-directionalLight.shadow.camera.bottom = - 7
-directionalLight.position.set(5, 5, 5)
+directionalLight.shadow.camera.far = 35
+directionalLight.shadow.camera.left = - 24
+directionalLight.shadow.camera.top = 14
+directionalLight.shadow.camera.right = 24
+directionalLight.shadow.camera.bottom = - 14
+directionalLight.position.set(8, 8, 8)
 scene.add(directionalLight)
 
 /**
@@ -228,7 +231,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 4, 12)
+camera.position.set(-8, 12, 8)
 scene.add(camera)
 
 const axesHelper = new THREE.AxesHelper()
